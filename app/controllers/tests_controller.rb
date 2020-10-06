@@ -15,9 +15,11 @@ class TestsController < ApplicationController
         test['region'] = t['REGION']
         test['test_total'] = t['TESTS_ALL']
         test['test_pos'] = t['TESTS_ALL_POS']
+        test['created_at'] = Time.now
+        test['updated_at'] = Time.now
         all_tests.append(test)
       end
-      Test.create(all_tests)
+      Test.insert_all(all_tests)
       @tests = Test.all
     end
 
